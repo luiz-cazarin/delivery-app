@@ -4,8 +4,7 @@
       <q-btn color="red" flat round dense icon="chevron_left" to="/login" />
       <q-space />
       <q-title class="text-black text-bold">{{ "Search" }}</q-title>
-      <q-space />
-      <q-btn color="red" flat round dense to="/login" />
+      <q-space style="margin-right: 34px" />
     </q-toolbar>
   </q-header>
   <q-page>

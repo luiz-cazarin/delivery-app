@@ -4,8 +4,7 @@
       <q-btn color="red" flat round dense icon="chevron_left" to="/login" />
       <q-space />
       <q-title class="text-black text-bold">{{ "Register" }}</q-title>
-      <q-space />
-      <q-btn color="red" flat round dense to="/login" />
+      <q-space style="margin-right: 34px" />
     </q-toolbar>
   </q-header>
   <q-page class="body">
@@ -17,23 +16,64 @@
     </q-card-section>
     <q-card-section class="form">
       <div class="q-gutter-y-md column">
-        <q-input outlined v-model="text" label="Name" required />
-        <q-input outlined v-model="text" label="Email" />
-        <q-input outlined v-model="text" label="Password" />
-        <q-input outlined v-model="text" label="Phone number" />
-        <q-input outlined v-model="text" label="CPF" />
-        <q-input outlined v-model="text" label="Address" />
+        <q-input
+          outlined
+          v-model="name"
+          label="Name"
+          :rules="[(val) => !!val || 'Name is required']"
+          lazy-rules
+        />
+        <q-input
+          outlined
+          v-model="email"
+          label="Email"
+          type="email"
+          :rules="[(val) => !!val || 'Email is required']"
+          lazy-rules
+        />
+        <q-input
+          outlined
+          v-model="password"
+          label="Password"
+          type="password"
+          :rules="[(val) => !!val || 'Password is required']"
+          lazy-rules
+        />
+        <q-input
+          outlined
+          v-model="phone"
+          label="Phone number"
+          mask="(###) ##### - ####"
+          type="tel"
+        />
+        <q-input outlined v-model="cpf" label="CPF" mask="###.###.###.##" />
+        <q-input outlined v-model="address" label="Address" />
         <div class="full-width row no-wrap justify-between">
-          <q-input outlined v-model="text" label="CEP" style="width: 75%" />
-          <q-input outlined v-model="text" label="N" style="width: 20%" />
+          <q-input outlined v-model="cep" label="CEP" style="width: 75%" />
+          <q-input
+            outlined
+            v-model="number"
+            label="Nº"
+            type="number"
+            style="width: 20%"
+          />
         </div>
-        <q-input outlined v-model="text" label="Reference" />
+        <q-input
+          outlined
+          v-model="text"
+          label="Reference"
+          :rules="[
+            (val) => val.length < 32 || 'Please use maximum 32 character',
+          ]"
+          lazy-rules
+        />
         <div>
-          <q-checkbox v-model="right" label="Accept all terms & services" />
+          <q-checkbox v-model="val" label="Accept all terms & services" />
         </div>
         <q-btn
           class="btn-register bg-primary text-white"
           label="Register"
+          type="submit"
           to="/"
         />
       </div>
@@ -43,9 +83,15 @@
 
 <script>
 import { defineComponent } from "vue";
+import { ref } from "vue";
 
 export default defineComponent({
   name: "register-page",
+  setup() {
+    return {
+      val: ref(false),
+    };
+  },
 });
 </script>
 

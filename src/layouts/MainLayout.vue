@@ -8,12 +8,21 @@
     </q-page-container>
     <!-- footer menu -->
     <q-footer class="menu">
-      <ul>
-        <li v-for="item in items" :key="item.link">
-          <q-btn class="icon" flat size="lg" :icon="item.icon" :to="item.link">
-          </q-btn>
-        </li>
-      </ul>
+      <q-list class="list">
+        <template v-for="item in items" :key="item.icon">
+          <q-item clickable>
+            <q-item-section>
+              <q-btn
+                flat
+                size="lg"
+                color="grey"
+                :icon="item.icon"
+                :to="item.link"
+              />
+            </q-item-section>
+          </q-item>
+        </template>
+      </q-list>
     </q-footer>
   </q-layout>
 </template>
@@ -28,6 +37,16 @@ export default {
         { icon: "local_grocery_store", link: "/orders" },
         { icon: "person_outline", link: "/profile" },
       ],
+      menuList: [
+        {
+          icon: "inbox",
+          label: "Inbox",
+        },
+        {
+          icon: "send",
+          label: "Outbox",
+        },
+      ],
     };
   },
 };
@@ -38,11 +57,11 @@ export default {
   background: rgb(255, 255, 255);
   padding: 0.2rem 0;
   box-shadow: 0px -1px 8px rgba(0, 0, 0, 0.178);
-  ul {
-    justify-content: space-around;
+  .list {
+    justify-content: space-evenly;
     list-style: none;
     display: flex;
-    padding: 0.5rem 0px !important;
+    padding: 0.2rem 0px !important;
     margin: 0px !important;
     .icon {
       color: #939393;
