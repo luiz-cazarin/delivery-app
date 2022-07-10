@@ -1,14 +1,7 @@
 <template>
   <q-layout view="hHh lpR fFf">
     <!-- header -->
-    <q-header class="bg-white">
-      <q-toolbar class="q-pt-xl q-pb-sm">
-        <q-btn color="red" flat round dense icon="chevron_left" />
-        <q-space />
-        <q-title class="text-black text-bold">{{ "Home" }}</q-title>
-        <q-space />
-      </q-toolbar>
-    </q-header>
+
     <!-- body -->
     <q-page-container>
       <router-view />
@@ -17,7 +10,8 @@
     <q-footer class="menu">
       <ul>
         <li v-for="item in items" :key="item.link">
-          <q-icon class="icon" size="md" :name="item.icon"></q-icon>
+          <q-btn class="icon" flat size="lg" :icon="item.icon" :to="item.link">
+          </q-btn>
         </li>
       </ul>
     </q-footer>
@@ -29,10 +23,10 @@ export default {
   data() {
     return {
       items: [
-        { icon: "home", link: "https://awesome.quasar.dev" },
-        { icon: "search", link: "https://awesome.quasar.dev" },
-        { icon: "local_grocery_store", link: "https://awesome.quasar.dev" },
-        { icon: "person_outline", link: "https://awesome.quasar.dev" },
+        { icon: "home", link: "/" },
+        { icon: "search", link: "/search" },
+        { icon: "local_grocery_store", link: "/orders" },
+        { icon: "person_outline", link: "/profile" },
       ],
     };
   },
@@ -48,6 +42,8 @@ export default {
     justify-content: space-around;
     list-style: none;
     display: flex;
+    padding: 0.5rem 0px !important;
+    margin: 0px !important;
     .icon {
       color: #939393;
     }
