@@ -27,7 +27,9 @@
       transition-show="slide-left"
       transition-hide="slide-right"
     >
-      <card-settings></card-settings>
+      <card-profile v-if="currItem === 1"></card-profile>
+      <card-help v-if="currItem === 2"></card-help>
+      <card-settings v-if="currItem === 3"></card-settings>
     </q-dialog>
 
     <q-item class="content-setting">
@@ -37,7 +39,7 @@
           :key="i.id"
           clickable
           v-ripple
-          @click="dialog = true"
+          @click="openDialog(i)"
         >
           <q-item-section avatar>
             <q-icon :name="i.icon" />
@@ -53,10 +55,14 @@
 import { defineComponent } from "vue";
 import { ref } from "vue";
 import CardSettings from "../components/CardSettings.vue";
+import CardHelp from "../components/CardHelp.vue";
+import CardProfile from "../components/CardProfile.vue";
 
 export default defineComponent({
   components: {
     CardSettings,
+    CardHelp,
+    CardProfile,
   },
   name: "profile-page",
   setup() {
@@ -64,6 +70,7 @@ export default defineComponent({
       dialog: ref(false),
       maximizedToggle: ref(true),
       val: ref(false),
+      currItem: 0,
       items: [
         {
           id: 0,
@@ -71,12 +78,12 @@ export default defineComponent({
           title: "Inbox",
         },
         {
-          id: 3,
+          id: 1,
           icon: "list",
           title: "Meus dados",
         },
         {
-          id: 3,
+          id: 2,
           icon: "help",
           title: "Ajuda",
         },
@@ -86,6 +93,10 @@ export default defineComponent({
           title: "Settings",
         },
       ],
+      openDialog(item) {
+        this.currItem = item.id;
+        this.dialog = true;
+      },
     };
   },
 });
