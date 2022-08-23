@@ -10,7 +10,7 @@
       <q-item-section avatar>
         <q-avatar size="xl">
           <img
-            src="https://scontent-gig2-1.xx.fbcdn.net/v/t39.30808-6/290750780_5186859131410100_7687568019354966757_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeGl7NrE45L_IsfS83i19OvrXr-PMX0_KpRev48xfT8qlEAEbDtPhJmUjw7Hjvg6yI2rNaM9R-ZpXdYppM-rxozG&_nc_ohc=1lOa0zRIa3sAX_cZfX8&tn=yu4oiro3Mr-RTGv5&_nc_ht=scontent-gig2-1.xx&oh=00_AT_GKQRTb4TA2w6-sc-HgXzikxfEY8iHEgNKMDAv3OFrrw&oe=62D0F7B4"
+            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
           />
         </q-avatar>
       </q-item-section>
